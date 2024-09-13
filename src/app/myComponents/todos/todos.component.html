@@ -1,0 +1,11 @@
+<!--  Directive ngFor : custom html attributes --> 
+<app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
+<div *ngIf="this.todos.length==0; else elseBlock">No To Do items to display.</div>
+<ng-template #elseBlock>
+    <h4>Your To Do Items</h4>
+    <ul *ngFor="let todo of todos; index as i">
+        <app-todo-item [todo]="todo" [i]="i" (toggleTodo)="toggleTodo($event)" (deleteTodo)="deleteTodo($event)"></app-todo-item>
+        <!-- <li>{{ todo.sno }} - {{ todo.title }} - {{ todo.desc }}</li> -->
+    </ul>
+</ng-template>
+    
